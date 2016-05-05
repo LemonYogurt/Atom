@@ -1,0 +1,11 @@
+git config --global user.name "LemonYogurt"
+git config --global user.email "it.dream.mozilla@gmail.com"
+为什么要去配置用户名和邮箱：
+因为这里配置了之后，后面做的每次的提交的话，都会带上相应的信息，比如说团队之间协作开发，多个人对index.html进行了修改，那么最后这个文件发生冲突了以后，
+我们需要去查看这个文件相应的信息，如果去解决这个冲突，每个人每次提交都会有一个版本号，每个版本号对应的就是当前这个用户提交的name和email，就可以找到之前修改变动都是哪个用户提交的
+
+配置完成后，要查看是否已经生效了：
+git config --list
+
+如果不记得之前敲过什么命令的话，可以使用history命令进行查看：
+history
