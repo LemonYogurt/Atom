@@ -1,0 +1,28 @@
+pwd：查看当前目录的绝对路径
+
+创建文件：
+touch index.html .gitignore README.md
+
+使用ll命令查看后，显示：
+-rw-r--r-- 1 Administrator 197121 0 五月  5 01:19 index.html
+drwxr-xr-x 1 Administrator 197121 0 五月  1 12:08 Atom/
+
+d：目录
+r -> read
+w -> write
+x -> exec
+
+对前半部分做拆分：
+- ：横杠代表是一个文件，d代表是一个文件夹
+rw-：可读可写不可执行
+r--：仅可读
+r--：仅可读
+
+rwx对应的权限是111，r--对应的权限是100，r-x对应的权限是101
+
+ls -al：-a表示all，l表示list，以列表的方式去展示，隐藏的文件也能查看到了（.gitignore）
+
+cat filename：显示文件的内容
+
+cp -R dir1/ dir2/：将dir1下面的所有内容复制到dir2下面去
+cp README.md a.md：将README.md的内容复制到a.md中
