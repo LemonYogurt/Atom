@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>网页加载进度条01</title>
+    <style media="screen">
+      @-webkit-keyframes rotateC{
+        0%{
+          -webkit-transform:rotate(0deg);
+        }
+        100%{
+          -webkit-transform:rotate(-360deg);
+        }
+      }
+      @-webkit-keyframes rotateE{
+        0%{
+          -webkit-transform:rotate(0deg);
+        }
+        100%{
+          -webkit-transform:rotate(360deg);
+        }
+      }
+      @-webkit-keyframes translate{
+        0%{
+          -webkit-transform:translateY(0px);
+        }
+        100%{
+          -webkit-transform:translateY(7px);
+        }
+      }
+      @-webkit-keyframes shadow{
+        0%{
+          -webkit-transform:scale(0.8);
+          opacity:0.5;
+        }
+        100%{
+          -webkit-transform:scale(1);
+          opacity:1;
+        }
+      }
+      .loading{
+        width:120px;
+        height:140px;
+        position:absolute;
+        left:50%;
+        top:50%;
+        margin-left:-60px;
+        margin-top:-70px;
+        /*left:calc(50% - 60px);*/
+        /*top:calc(50% - 70px);*/
+      }
+      .loading .pic{
+        width:120px;
+        height:100px;
+        background:url(./images/loading3.png) no-repeat;
+        position:relative;
+        /*这里会有跳动的效果，0 - 7后，直接从7条到0了，所以第二次希望从7到0，偶数逆向过渡 alternate*/
+        /*alternate：偶数次反向执行*/
+        -webkit-animation: .6s translate infinite alternate linear;
+      }
+      .loading .pic div{
+        width:120px;
+        height:100px;
+        position:absolute;
+        left:0;
+        top:0;
+      }
+      .loading .pic .pic2{
+        background:url(./images/loading4.png) no-repeat;
+        /*infinite：表示无限次  linear：表示匀速*/
+        -webkit-animation: 1s rotateC infinite linear;
+      }
+      .loading .pic .pic3{
+        background:url(./images/loading5.png) no-repeat;
+        -webkit-animation: 1s rotateE infinite linear;
+      }
+      .loading .pic .text {
+        font:18px/100px arial;
+        text-align:center;
+        color:#f39;
+      }
+      #shadow{
+        width:100px;
+        height:40px;
+        margin:0 auto;
+        /*径向渐变：-webkit-radial-gradient，包含：contain*/
+        background:-webkit-radial-gradient(contain, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+        -webkit-animation: .6s shadow infinite alternate linear;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading">
+      <!-- 图片部分 -->
+      <div class="pic">
+        <div class="pic2"></div>
+        <div class="pic3"></div>
+        <div class="text">0%</div>
+      </div>
+      <!-- 阴影部分 -->
+      <div id="shadow"></div>
+    </div>
+  </body>
+</html>
