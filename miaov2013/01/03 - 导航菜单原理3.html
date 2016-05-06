@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      *{margin:0;padding:0;}
+      li {float:left;margin-left:20px;}
+      .clearfix:after{
+        content:"";
+        display:block;
+        clear:both;
+      }
+      div{display:none;width:0;height:0;}
+    </style>
+    <!-- 管理js文件 -->
+    <script type="text/javascript" src="../lib/sea.js"></script>
+    <!-- 进场动画和出场动画使用运动库 -->
+    <script type="text/javascript" src="../lib/move.js"></script>
+    <script type="text/javascript">
+      seajs.use('./js/main.js', function () {
+        console.log('Loading Success...');
+      });
+    </script>
+  </head>
+  <body>
+    <ul class="clearfix">
+      <li><a href="javascript:void(0)" data-hash="index">首页</a></li>
+      <li><a href="javascript:void(0)" data-hash="subject">课程</a></li>
+      <li><a href="javascript:void(0)" data-hash="message">留言</a></li>
+    </ul>
+    <div data-hash="index" style="background:red;" class="">首页的内容</div>
+    <div data-hash="subject" style="background:yellow;" class="">学员的内容</div>
+    <div data-hash="message" style="background:blue;" class="">留言的内容</div>
+  </body>
+</html>
+<!--
+  导航菜单的进场动画和出场动画如何完美的结合在一起：
+  main.js：架构新官网的时候要有一个主体的js文件
+ -->
