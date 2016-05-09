@@ -103,10 +103,51 @@
       <div class="pic">
         <div class="pic2"></div>
         <div class="pic3"></div>
-        <div class="text">0%</div>
+        <div class="text" id="J_text">0%</div>
       </div>
       <!-- 阴影部分 -->
       <div id="shadow"></div>
     </div>
+    <script>
+      var oText = document.getElementById('J_text');
+      var oPic = document.getElementsByClassName('pic')[0];
+      var oPic2 = oPic.getElementsByClassName('pic2')[0];
+      var oPic3 = oPic.getElementsByClassName('pic3')[0];
+      var oShadow = document.getElementById('shadow');
+      var iNum = 0;
+      var aPic = [
+        "http://img5.duitang.com/uploads/item/201508/13/20150813210713_Xztcu.thumb.700_0.jpeg",
+        "http://img31.mtime.cn/mg/2016/04/09/192144.14965279.jpg",
+        "http://img5.duitang.com/uploads/item/201603/04/20160304112455_tckh3.png",
+        "http://dmimg.5054399.com/allimg/150512/15_150512143201_2.jpg",
+        "http://pic2.mofang.com/2014/0923/20140923054700106.jpg"];
+      for (var i = 0; i < aPic.length; i++) {
+        var oImg = new Image();
+        oImg.src = aPic[i];
+        oImg.index = i;
+        oImg.onload = function () {
+          iNum++;
+          oText.innerHTML = iNum / aPic.length * 100 + '%';
+          if (iNum == aPic.length) {
+            // 首先要把动画给停止了，也就是让animation暂停：animation-play-state:paused;
+            // 首先要把有animation的元素给获取过来
+            oPic.style.WebkitAnimationPlayState = 'paused';
+            oPic2.style.WebkitAnimationPlayState = 'paused';
+            oPic3.style.WebkitAnimationPlayState = 'paused';
+            oShadow.style.WebkitAnimationPlayState = 'paused';
+          }
+        };
+        oImg.onerror = function () {
+          // 这里没有加载成功的话，具体是跳过还是增加一个替补图，要看工作中的需求了
+          console.log(this.index);
+        };
+      }
+    </script>
   </body>
 </html>
+<!--
+  在打开一个网站的时候，首先会把网站的那些大型的图片预加载出来的
+  要测试的话，直接引入网上的图片，本地的图片加载太快了
+  图片有onload的事件，onload事件代表图片已经加载进来了
+  假如说加载图片失败了，那就需要监听onerror事件了
+ -->
